@@ -1,16 +1,26 @@
-# desafio
+<br>
+<center>
+<p align="center">
+  <h1> Desafio ⁉️ </h1>
+</p></center>
 
-A new Flutter application.
+## 👁‍🗨 Tecnologias
 
-## Getting Started
+Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-This project is a starting point for a Flutter application.
+- [Flutter](https://flutter.dev/)
+- [Dart](https://dart.dev/)
 
-A few resources to get you started if this is your first Flutter project:
+## 💻 Projeto
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+O projeto Desafio, consiste em um aplicativo para testar as funções de localização e preencher os campos com as informações retornadas pelo dispositivo.
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## ▶️ Como executar
+
+- Clone o repositório
+- Abra o terminal no diretório do projeto e execute `flutter pub get`
+- Inicie seu app com `flutter run`
+
+---
+<br>
+Este projeto foi desenvolvido como um desafio proposto por um amigo.

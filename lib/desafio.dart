@@ -1,20 +1,41 @@
 import 'dart:convert';
 
+import 'package:desafio/API.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoder/geocoder.dart';
 import 'package:http/http.dart' as http;
 import 'package:geolocator/geolocator.dart';
 import 'package:http/http.dart';
 
-class Matheus extends StatefulWidget {
+class Desafio extends StatefulWidget {
 
   @override
-  _MatheusState createState() => _MatheusState();
+  _DesafioState createState() => _DesafioState();
 }
 
-class _MatheusState extends State<Matheus> {
+class _DesafioState extends State<Desafio> {
 
-  String erroMatheus;
+  var erroDesafio;
+  var url = 'url_api_aqui';
+
+  void myFunction() {
+
+    Map<String, String> headers = {
+      "Content-Type": "application/json"
+    };
+
+    Map params = {
+      'latitude': '-21.2770563',
+      'longitude': '-48.4730583',
+    };
+
+    String paramsJson = json.encode(params);
+
+    http.post(url, body:paramsJson, headers: headers)
+    .then((response) => print(response.body))
+    .catchError((erroDesafio) => print('Retorno do erro: ${erroDesafio}'));
+
+}
 
   Future<void> sendAPI(String lat, String lng) async{
     print('entrei no send');
@@ -35,8 +56,8 @@ class _MatheusState extends State<Matheus> {
     }
 }
 
-  var latDevice;
-  var lngDevice;
+  String latDevice;
+  String lngDevice;
   double latD;
   double lngD;
 
@@ -56,7 +77,13 @@ class _MatheusState extends State<Matheus> {
 
     });
 
-    sendAPI(latDevice, lngDevice);
+    bool ok = await APIDesafio.send('-21.2770563', '-48.4730583');
+    if(ok) {
+      print('deu certo o POST');
+    }else {
+      print('Deu ruim');
+    }
+    myFunction();
     //getEndereco();
   }
 
@@ -90,7 +117,7 @@ class _MatheusState extends State<Matheus> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MATHEUS'),
+        title: Text('Desafio'),
         centerTitle: true,
         backgroundColor: Colors.purple,
       ),
@@ -106,16 +133,8 @@ class _MatheusState extends State<Matheus> {
               ),
               FlatButton(
                 onPressed: () {
-                  if(end2.isEmpty){
-                    _getCurrentLocation();
-
-                  }
-                  else if(end2.isNotEmpty){
-                    setState(() {
-                    end1 = '';
-                    end2 = '';
-                  });
-                  }
+                  _getCurrentLocation();
+                  myFunction();
                   
                 },
                 child: Container(
@@ -135,7 +154,7 @@ class _MatheusState extends State<Matheus> {
               ),
 
               Container(
-                child: Text(erroMatheus ?? '', style: TextStyle(
+                child: Text(erroDesafio ?? '', style: TextStyle(
                   fontSize: 18
                 ),),
               )
