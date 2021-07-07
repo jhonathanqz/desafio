@@ -15,6 +15,11 @@ Esse projeto foi desenvolvido com as seguintes tecnologias:
 
 O projeto Desafio, consiste em um aplicativo para testar as funções de localização e preencher os campos com as informações retornadas pelo dispositivo.
 
+## 📱 Screenshots
+<div>
+  <img src="https://github.com/jhonathanqz/desafio/blob/master/screenshots/home1.jpg" width="600px" style="max-width:100%;" alt="imagem do projeto">
+</div>
+
 ## ▶️ Como executar
 
 - Clone o repositório

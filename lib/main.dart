@@ -32,7 +32,6 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-
   var connected;
   final _scaffoldKey = GlobalKey<ScaffoldState>();
   List data;
@@ -49,24 +48,21 @@ class _HomeState extends State<Home> {
     return "Dados obtidos com sucesso";
   }
 
-   @override
+  @override
   void initState() {
     super.initState();
     //solicitar permissões ao usuário
     grantPermissions();
     //verifica conexão com a internet
     _checkInternetConnection();
-
   }
-  
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       key: _scaffoldKey,
       appBar: AppBar(
-        title: Text("Desafio Borgatto"),
+        title: Text("Desafio"),
         centerTitle: true,
         backgroundColor: Colors.cyan[700],
       ),
@@ -76,65 +72,62 @@ class _HomeState extends State<Home> {
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           FlatButton(
-            color: Colors.cyan[700],
-            onPressed: () {
-              if(connected == '1'){
-                Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => BuscaCEP()));
-              }
-              else if(connected == '2'){
-                _onFail('Por favor, verifique sua conexão com a internet antes de prosseguir');
-              }
-            },
-            child: Container(
-              width: double.infinity,
-              child: Text(
-              'Busca CEP',
-              style: TextStyle(color: Colors.white, fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-            )
-          ),
+              color: Colors.cyan[700],
+              onPressed: () {
+                if (connected == '1') {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => BuscaCEP()));
+                } else if (connected == '2') {
+                  _onFail(
+                      'Por favor, verifique sua conexão com a internet antes de prosseguir');
+                }
+              },
+              child: Container(
+                width: double.infinity,
+                child: Text(
+                  'Busca CEP',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
+              )),
           FlatButton(
-            color: Colors.cyan[700],
-            onPressed: () {
-              if(connected == '1'){
-                Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => BuscaLartLng()));
-              }
-              else if(connected == '2'){
-                _onFail('Por favor, verifique sua conexão com a internet antes de prosseguir');
-              }
-            },
-            child: Container(
-              width: double.infinity,
-              child: Text(
-              'Busca Lat/Lng',
-              style: TextStyle(color: Colors.white, fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-            )
-          ),
+              color: Colors.cyan[700],
+              onPressed: () {
+                if (connected == '1') {
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => BuscaLartLng()));
+                } else if (connected == '2') {
+                  _onFail(
+                      'Por favor, verifique sua conexão com a internet antes de prosseguir');
+                }
+              },
+              child: Container(
+                width: double.infinity,
+                child: Text(
+                  'Busca Lat/Lng',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
+              )),
           FlatButton(
-            color: Colors.cyan[700],
-            onPressed: () {
-              if(connected == '1'){
-                Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => Desafio()));
-              }
-              else if(connected == '2'){
-                _onFail('Por favor, verifique sua conexão com a internet antes de prosseguir');
-              }
-            },
-            child: Container(
-              width: double.infinity,
-              child: Text(
-              'Accesys',
-              style: TextStyle(color: Colors.white, fontSize: 18),
-              textAlign: TextAlign.center,
-            ),
-            )
-          ),
+              color: Colors.cyan[700],
+              onPressed: () {
+                if (connected == '1') {
+                  Navigator.of(context)
+                      .push(MaterialPageRoute(builder: (context) => Desafio()));
+                } else if (connected == '2') {
+                  _onFail(
+                      'Por favor, verifique sua conexão com a internet antes de prosseguir');
+                }
+              },
+              child: Container(
+                width: double.infinity,
+                child: Text(
+                  'Accesys',
+                  style: TextStyle(color: Colors.white, fontSize: 18),
+                  textAlign: TextAlign.center,
+                ),
+              )),
         ],
       )),
     );
@@ -151,14 +144,14 @@ class _HomeState extends State<Home> {
     }
   }
 
-   _checkInternetConnection() async{
+  _checkInternetConnection() async {
     var result = await Connectivity().checkConnectivity();
-    if(result == ConnectivityResult.none){
-      connected='2';
-    }else if (result == ConnectivityResult.mobile){
-      connected='1';
-    }else if(result == ConnectivityResult.wifi){
-      connected='1';
+    if (result == ConnectivityResult.none) {
+      connected = '2';
+    } else if (result == ConnectivityResult.mobile) {
+      connected = '1';
+    } else if (result == ConnectivityResult.wifi) {
+      connected = '1';
     }
   }
 
@@ -175,6 +168,4 @@ class _HomeState extends State<Home> {
       ),
     );
   }
-
- 
 }
